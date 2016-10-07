@@ -10,3 +10,4 @@ github_username:  nhandler
 # Build settings
 markdown: kramdown
 permalink: pretty
+theme: beautiful-jekyll
