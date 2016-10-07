@@ -6,8 +6,11 @@ baseurl: "/blog"
 url: "http://nhandler.com"
 twitter_username: nathanhandler
 github_username:  nhandler
+disqus:           nhandler
+
+link-tags: false
 
 # Build settings
 markdown: kramdown
-permalink: pretty
-theme: beautiful-jekyll
+permalink: /:year/:month/:day/:title/
+# theme: beautiful-jekyll

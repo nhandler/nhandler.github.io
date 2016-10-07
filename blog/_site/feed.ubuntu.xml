@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title> - Ubuntu</title>
+		<description>Posts categorized as 'Ubuntu'</description>
+		<link>http://nhandler.com</link>
+		<atom:link href="http://nhandler.com/feed.ubuntu.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Ubuntu California 15.10 Release Party</title>
+				
+					<description>&lt;p&gt;&lt;img src=&quot;http://people.ubuntu.com/~nhandler/images/11032015-Ubuntu15.10ReleaseParty.jpg&quot; alt=&quot;Ubuntu California 15.10 Release Party&quot; /&gt;&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Tue, 03 Nov 2015 00:00:00 -0500</pubDate>
+				<link>http://nhandler.com/2015/11/03/ubuntu-15.10-release-party/</link>
+				<guid isPermaLink="true">http://nhandler.com/2015/11/03/ubuntu-15.10-release-party/</guid>
+			</item>
+		
+			<item>
+				<title>Introducing nmbot</title>
+				
+					<description>&lt;p&gt;While going through the NM Process, I spent a lot of time on &lt;a href=&quot;https://nm.debian.org/&quot;&gt;https://nm.debian.org&lt;/a&gt;. At the bottom of the page, there is a TODO list of some new features they would like to implement. One item on the list jumped out at me as something I was capable of completing: &lt;strong&gt;IRC bot to update stats in the #debian-newmaint channel topic&lt;/strong&gt;. I immediately reached out to Enrico Zini who was very supportive of the idea. He also explained how he wanted to expand on that idea and have the bot send updates to the channel whenever the progress of an applicant changes. Thanks to Paul Tagliamonte, I was able to get my hands on a copy of the nm.debian.org database (with private information replaced with dummy data). This allowed me to create some code to parse the database and create counts for the number of people waiting in the various queues. I also created a list of events that occurred in the last n days. Enrico then took this code and modified it to integrate it into the &lt;a href=&quot;https://nm.debian.org/public/stats/latest&quot;&gt;website&lt;/a&gt;. You can specify the &lt;a href=&quot;https://nm.debian.org/public/stats/latest?days=30&quot;&gt;number of days&lt;/a&gt; to show events for, and even have the information produced in &lt;a href=&quot;https://nm.debian.org/public/stats/latest?days=30&amp;amp;json=true&quot;&gt;JSON format&lt;/a&gt;. This information is generated upon requesting the page, so it is always up-to-date. It took a couple of rounds of revisions to ensure that the website was exposing all of the necessary information in the JSON export. At this stage, I converted the code to be an IRC bot. Based on prior experience, I decided to implement this as an irssi&lt;a href=&quot;http://www.irssi.org/&quot;&gt;5&lt;/a&gt; script. The bot is currently running as &lt;em&gt;nmbot&lt;/em&gt; in &lt;em&gt;#debian-newmaint&lt;/em&gt; on &lt;em&gt;OFTC&lt;/em&gt;. Every minute, it fetches the JSON statistics to see if any new events have occurred. If they have, it updates the topic and sends announcements as necessary.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Sun, 11 Nov 2012 00:00:00 -0500</pubDate>
+				<link>http://nhandler.com/2012/11/11/nmbot/</link>
+				<guid isPermaLink="true">http://nhandler.com/2012/11/11/nmbot/</guid>
+			</item>
+		
+			<item>
+				<title>Debian Developer</title>
+				
+					<description>&lt;p&gt;Today, I officially got approved by the Debian Account Managers as a Debian Developer (still waiting on keyring-maint and DSA). Over the years, I have seen many people complain about the New Member Process. The most common complaint was with regards to the (usually) long amount of time the process can take to complete. I am writing this blog post to provide one more perspective on this process. Hopefully, it will prove useful to people considering starting the New Member Process.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Sun, 11 Nov 2012 00:00:00 -0500</pubDate>
+				<link>http://nhandler.com/2012/11/11/debian-developer/</link>
+				<guid isPermaLink="true">http://nhandler.com/2012/11/11/debian-developer/</guid>
+			</item>
+		
+			<item>
+				<title>Debian Screencast Challenge</title>
+				
+					<description>&lt;p&gt;Today in &lt;em&gt;#debian-mentors&lt;/em&gt;, a brief discussion about screencasts came up. Some people felt that a series of short screencasts might be a nice addition to the existing Debian Developer documentation. After seeing the popularity of of Ubuntu’s various video series over the years, I tend to agree that video documentation can be a nice way to supplement traditional text-based documentation. No, this is not designed to replace the existing documentation; it is merely designed to provide an alternative method for people to learn the material.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Tue, 30 Oct 2012 00:00:00 -0400</pubDate>
+				<link>http://nhandler.com/2012/10/30/debian-screencast-challenge/</link>
+				<guid isPermaLink="true">http://nhandler.com/2012/10/30/debian-screencast-challenge/</guid>
+			</item>
+		
+			<item>
+				<title>Hello Chronicle!</title>
+				
+					<description>&lt;p&gt;Over the years, I have had many different blogs. I mainly use them to post updates regarding my work in the FOSS community, with most of these relating to Ubuntu/Debian. My most recent blog was a Wordpress instance I ran on a VPS provided by a friend. This worked pretty well, but for various reasons, I no longer have access to that box.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Mon, 29 Oct 2012 00:00:00 -0400</pubDate>
+				<link>http://nhandler.com/2012/10/29/hello-chronicle/</link>
+				<guid isPermaLink="true">http://nhandler.com/2012/10/29/hello-chronicle/</guid>
+			</item>
+		
+			<item>
+				<title>FOSSCON</title>
+				
+					<description>&lt;p&gt;This post is long past due, but I figured it is better late than never. At the start of the year, I set a goal to get more involved with attending and speaking at conferences. Through work, I was able to attend the &lt;a href=&quot;https://www.socallinuxexpo.org/scale/14x&quot;&gt;Southern California Linux Expo (SCALE)&lt;/a&gt; in Pasadena, CA in January. I also got to give a talk at &lt;a href=&quot;http://conferences.oreilly.com/oscon/oscon-tx-2016&quot;&gt;O’Relly’s Open Source Convention (OSCON)&lt;/a&gt; in Austin, TX in May. However, I really wanted to give a talk about my experience contributing in the Ubuntu community.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Sun, 07 Oct 2012 00:00:00 -0400</pubDate>
+				<link>http://nhandler.com/2012/10/07/fosscon/</link>
+				<guid isPermaLink="true">http://nhandler.com/2012/10/07/fosscon/</guid>
+			</item>
+		
+	</channel>
+</rss>

@@ -1,8 +1,11 @@
 ---
 layout:     post
 title:      "Ubuntu California 15.10 Release Party"
+published:  true
+comments:   true
 date:       2015-11-03
-categories: Planet-Debian Planet-Ubuntu LoCo
+categories: ["planet-debian", "planet-ubuntu"]
+tags:       [LoCo]
 ---
 
 ![Ubuntu California 15.10 Release Party](http://people.ubuntu.com/~nhandler/images/11032015-Ubuntu15.10ReleaseParty.jpg)

@@ -1,8 +1,10 @@
 ---
 layout:     post
 title:      "FOSSCON"
-date:       2012-10-6
-categories: Planet-Debian Planet-Ubuntu Conferences
+published:  true
+date:       2012-10-7
+categories: ["planet-debian", "planet-ubuntu"]
+tags:       [Conference]
 ---
 
 This post is long past due, but I figured it is better late than never. At the start of the year, I set a goal to get more involved with attending and speaking at conferences. Through work, I was able to attend the [Southern California Linux Expo (SCALE)](https://www.socallinuxexpo.org/scale/14x) in Pasadena, CA in January. I also got to give a talk at [O'Relly's Open Source Convention (OSCON)](http://conferences.oreilly.com/oscon/oscon-tx-2016) in Austin, TX in May. However, I really wanted to give a talk about my experience contributing in the Ubuntu community.

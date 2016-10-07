@@ -1,8 +1,10 @@
 ---
 layout:     post
 title:      "Introducing nmbot"
+published:  true
 date:       2012-11-11
-categories: Planet-Debian Planet-Ubuntu nmbot
+categories: ["planet-debian", "planet-ubuntu"]
+tags:       [nmbot]
 ---
 
 While going through the NM Process, I spent a lot of time on [https://nm.debian.org][1]. At the bottom of the page, there is a TODO list of some new features they would like to implement. One item on the list jumped out at me as something I was capable of completing: **IRC bot to update stats in the #debian-newmaint channel topic**. I immediately reached out to Enrico Zini who was very supportive of the idea. He also explained how he wanted to expand on that idea and have the bot send updates to the channel whenever the progress of an applicant changes. Thanks to Paul Tagliamonte, I was able to get my hands on a copy of the nm.debian.org database (with private information replaced with dummy data). This allowed me to create some code to parse the database and create counts for the number of people waiting in the various queues. I also created a list of events that occurred in the last n days. Enrico then took this code and modified it to integrate it into the [website][2]. You can specify the [number of days][3] to show events for, and even have the information produced in [JSON format][4]. This information is generated upon requesting the page, so it is always up-to-date. It took a couple of rounds of revisions to ensure that the website was exposing all of the necessary information in the JSON export. At this stage, I converted the code to be an IRC bot. Based on prior experience, I decided to implement this as an irssi[5] script. The bot is currently running as *nmbot* in *#debian-newmaint* on *OFTC*. Every minute, it fetches the JSON statistics to see if any new events have occurred. If they have, it updates the topic and sends announcements as necessary.

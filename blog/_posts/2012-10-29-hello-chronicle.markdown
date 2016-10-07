@@ -1,8 +1,10 @@
 ---
 layout:     post
 title:      "Hello Chronicle!"
+pubished:   true
 date:       2012-10-29
-categories: Planet-Debian Planet-Ubuntu Chronicle
+categories: ["planet-debian", "planet-ubuntu"]
+tags:       [Chronicle]
 ---
 
 Over the years, I have had many different blogs. I mainly use them to post updates regarding my work in the FOSS community, with most of these relating to Ubuntu/Debian. My most recent blog was a Wordpress instance I ran on a VPS provided by a friend. This worked pretty well, but for various reasons, I no longer have access to that box.

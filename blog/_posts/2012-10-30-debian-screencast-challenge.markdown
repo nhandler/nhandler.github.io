@@ -1,8 +1,10 @@
 ---
 layout:     post
 title:      "Debian Screencast Challenge"
+published:  true
 date:       2012-10-30
-categories: Planet-Debian Planet-Ubuntu Screencast
+categories: ["planet-debian", "planet-ubuntu"]
+tags:       [Screencast]
 ---
 
 Today in *#debian-mentors*, a brief discussion about screencasts came up. Some people felt that a series of short screencasts might be a nice addition to the existing Debian Developer documentation. After seeing the popularity of of Ubuntu's various video series over the years, I tend to agree that video documentation can be a nice way to supplement traditional text-based documentation. No, this is not designed to replace the existing documentation; it is merely designed to provide an alternative method for people to learn the material.

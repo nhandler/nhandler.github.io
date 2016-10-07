@@ -1,8 +1,10 @@
 ---
 layout:     post
 title:      "Debian Developer"
+published:  true
 date:       2012-11-11
-categories: Planet-Debian Planet-Ubuntu DebianDeveloper
+categories: ["planet-debian", "planet-ubuntu"]
+tags:       ["Debian Developer"]
 ---
 
 Today, I officially got approved by the Debian Account Managers as a Debian Developer (still waiting on keyring-maint and DSA). Over the years, I have seen many people complain about the New Member Process. The most common complaint was with regards to the (usually) long amount of time the process can take to complete. I am writing this blog post to provide one more perspective on this process. Hopefully, it will prove useful to people considering starting the New Member Process.
