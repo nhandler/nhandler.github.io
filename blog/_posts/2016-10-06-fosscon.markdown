@@ -1,0 +1,26 @@
+---
+layout:     post
+title:      "FOSSCON"
+date:       2012-10-6
+categories: Planet-Debian Planet-Ubuntu Conferences
+---
+
+This post is long past due, but I figured it is better late than never. At the start of the year, I set a goal to get more involved with attending and speaking at conferences. Through work, I was able to attend the [Southern California Linux Expo (SCALE)](https://www.socallinuxexpo.org/scale/14x) in Pasadena, CA in January. I also got to give a talk at [O'Relly's Open Source Convention (OSCON)](http://conferences.oreilly.com/oscon/oscon-tx-2016) in Austin, TX in May. However, I really wanted to give a talk about my experience contributing in the Ubuntu community.
+
+[José Antonio Rey](https://launchpad.net/~jose) encouraged me to submit the talk to FOSSCON. While I've been aware of FOSSCON for years thanks to my involvement with the [freenode IRC network](http://freenode.net/) (which has had a reference to FOSSCON in the [/motd](http://irc.netsplit.de/networks/freenode/) for years), I had never actually attended it before. I also wasn't quite sure how I would handle traveling from San Francisco, CA to Philadelphia, PA. Regardless, I decided to go ahead and apply.
+
+Fast forward a few weeks, and imagine my surprise when I woke up to an email saying that my talk proposal was accepted. People were actually interested in me and what I had to say. I immediately began researching flights. While they weren't crazy expensive, they were still more money than I was comfortable spending. Luckily, José  had a solution to this problem as well; he suggested applying for funding through the [Ubuntu Community Donations fund](https://forms.canonical.com/cda/). While I've been an Ubuntu Member for over 8 years, I've never used this resource before. However, I was happy when I received a very quick approval.
+
+The conference itself was smaller than I was expecting. However, it was packed with lots of friendly and familiar faces of people I've interacted with online and in person over the years at various Open Source events.
+
+I started off the day by learning from José how to use [Juju](https://jujucharms.com/) to quickly setup applications in the cloud. While Juju has definitely come a long way over the last couple of years, and it appears t be quite easy to learn and use, it still appears to be lacking some of the features needed to take full control over how the underlying applications interact with each other. However, I look forward to continuing to watch it grow and mature.
+
+Net up, we had a lunch break. There was no catered lunch at this conference, so we decided to get some cheesesteak at [Abner's](https://www.yelp.com/biz/abners-cheesesteaks-philadelphia) (is any trip to Philadelphia complete without cheesesteak?).
+
+Following lunch, I took some time to make a few last minute changes to my presentation and rehearse a bit. Finally, it was time. I got up in front of the audience and gave my presentation. Overall, I was quite pleased. It was not perfect, but for the first time giving the talk, I thought it went pretty well. I will work hard to make it even better for next tme.
+
+Following my talk was a series of brief lightning talks prior to the closing keynote. Another long time friend of mine, [Elizabeth Krumbach Joseph](http://www.princessleia.com/), was giving the keynote about listening to the needs of your global open source community. While I have seen her speak on several other occassions, I really enjoyed this particular talk. It was full of great examples and anecdotes that were easy for the audience to relate to and start applying to their own communities.
+
+After the conference, a few of us went off and played tourist, paying the Liberty Bell a visit before concluding our trip in Philadelpha.
+
+Overall, I had a great time as FOSSCON. It was great being re-united with so many friends. A big thank you to José for his constant support and encouragement and to Canonical and the Ubuntu Community for helping to make it possible for me to attend this conference. Finally, thanks to the terrific FOSSCON staff for volunteering so much time to put on this great event.

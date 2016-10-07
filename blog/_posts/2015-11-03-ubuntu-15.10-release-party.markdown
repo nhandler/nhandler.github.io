@@ -1,0 +1,10 @@
+---
+layout:     post
+title:      "Ubuntu California 15.10 Release Party"
+date:       2015-11-03
+categories: Planet-Debian Planet-Ubuntu LoCo
+---
+
+![Ubuntu California 15.10 Release Party](http://people.ubuntu.com/~nhandler/images/11032015-Ubuntu15.10ReleaseParty.jpg)
+
+On Thursday, October 22, 2015, Ubuntu 15.10 (Wily Werewolf) was released. To celebrate, some San Francisco members of the Ubuntu California LoCo Team held a small release party. Yelp was gracious enough to host the event and provide us with food and drinks. Canonical also sent us a box of swag for the event. Unfortunately, it did not arrive in time. Luckily, James Ouyang had some extra goodies from a previous event for us to hand out. Despite having a rather small turnout for the event, it was still a fun night. Several people borrowed the USB flash drives I had setup with Ubuntu, Kubuntu, and Xubuntu 15.10 in order to install Ubuntu on their machines. Other people were happy to play around with the new release in a virtual machine on my computer. Overall, it was a good night. Hopefully, we can put together an even better and larger release party for Ubuntu 16.04 LTS.

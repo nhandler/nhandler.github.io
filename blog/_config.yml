@@ -1,0 +1,12 @@
+# Site settings
+title: Nathan Handler's Blog
+email: nathan.handler@gmail.com
+description: "Nathan Handler's Blog"
+baseurl: "/blog"
+url: "http://nhandler.com"
+twitter_username: nathanhandler
+github_username:  nhandler
+
+# Build settings
+markdown: kramdown
+permalink: pretty

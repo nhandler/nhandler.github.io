@@ -1,0 +1,18 @@
+---
+layout:     post
+title:      "Introducing nmbot"
+date:       2012-11-11
+categories: Planet-Debian Planet-Ubuntu nmbot
+---
+
+While going through the NM Process, I spent a lot of time on [https://nm.debian.org][1]. At the bottom of the page, there is a TODO list of some new features they would like to implement. One item on the list jumped out at me as something I was capable of completing: **IRC bot to update stats in the #debian-newmaint channel topic**. I immediately reached out to Enrico Zini who was very supportive of the idea. He also explained how he wanted to expand on that idea and have the bot send updates to the channel whenever the progress of an applicant changes. Thanks to Paul Tagliamonte, I was able to get my hands on a copy of the nm.debian.org database (with private information replaced with dummy data). This allowed me to create some code to parse the database and create counts for the number of people waiting in the various queues. I also created a list of events that occurred in the last n days. Enrico then took this code and modified it to integrate it into the [website][2]. You can specify the [number of days][3] to show events for, and even have the information produced in [JSON format][4]. This information is generated upon requesting the page, so it is always up-to-date. It took a couple of rounds of revisions to ensure that the website was exposing all of the necessary information in the JSON export. At this stage, I converted the code to be an IRC bot. Based on prior experience, I decided to implement this as an irssi[5] script. The bot is currently running as *nmbot* in *#debian-newmaint* on *OFTC*. Every minute, it fetches the JSON statistics to see if any new events have occurred. If they have, it updates the topic and sends announcements as necessary.
+
+While the bot is running, there are still a few more things on its TODO list. First, we need to move it to a stable and permanent home. Running it off of my personal laptop is fine for testing, but it is not a long term solution. Luckily, Joerg Jaspert (Ganneff) has graciously offerred to host the bot. He also made the suggestion of converting the bot to a [Supybot][6] plugin so that it could be integrated into the existing ftpmaster bot (dak). The bot's code is currently pretty simple, so I do not expect too much difficulty in converting it to Python/supybot. One last item on the list is something that Enrico is working on implementing. He is going to have the website generate static versions of the JSON output whenever an applicant's progress changes. The bot could then fetch this file, which would reduce the number of times the site needs to generate the JSON. The code for the bot is available in a [public git repository][7], and feedback/suggestions are always appreciated.
+
+[1]: https://nm.debian.org/
+[2]: https://nm.debian.org/public/stats/latest
+[3]: https://nm.debian.org/public/stats/latest?days=30
+[4]: https://nm.debian.org/public/stats/latest?days=30&json=true
+[5]: http://www.irssi.org/
+[6]: http://sourceforge.net/projects/supybot/
+[7]: https://github.com/nhandler/nmbot
