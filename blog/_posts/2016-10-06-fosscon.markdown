@@ -2,7 +2,7 @@
 layout:     post
 title:      "FOSSCON"
 published:  true
-date:       2012-10-7
+date:       2016-10-7
 categories: ["planet-debian", "planet-ubuntu"]
 tags:       [Conference]
 ---

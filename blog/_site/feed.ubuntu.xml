@@ -7,6 +7,18 @@
 		<atom:link href="http://nhandler.com/feed.ubuntu.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>FOSSCON</title>
+				
+					<description>&lt;p&gt;This post is long past due, but I figured it is better late than never. At the start of the year, I set a goal to get more involved with attending and speaking at conferences. Through work, I was able to attend the &lt;a href=&quot;https://www.socallinuxexpo.org/scale/14x&quot;&gt;Southern California Linux Expo (SCALE)&lt;/a&gt; in Pasadena, CA in January. I also got to give a talk at &lt;a href=&quot;http://conferences.oreilly.com/oscon/oscon-tx-2016&quot;&gt;O’Relly’s Open Source Convention (OSCON)&lt;/a&gt; in Austin, TX in May. However, I really wanted to give a talk about my experience contributing in the Ubuntu community.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Fri, 07 Oct 2016 00:00:00 -0400</pubDate>
+				<link>http://nhandler.com/blog/2016/10/07/fosscon/</link>
+				<guid isPermaLink="true">http://nhandler.com/2016/10/07/fosscon/</guid>
+			</item>
+		
+			<item>
 				<title>Ubuntu California 15.10 Release Party</title>
 				
 					<description>&lt;p&gt;&lt;img src=&quot;http://people.ubuntu.com/~nhandler/images/11032015-Ubuntu15.10ReleaseParty.jpg&quot; alt=&quot;Ubuntu California 15.10 Release Party&quot; /&gt;&lt;/p&gt;
@@ -64,18 +76,6 @@
 				<pubDate>Mon, 29 Oct 2012 00:00:00 -0400</pubDate>
 				<link>http://nhandler.com/blog/2012/10/29/hello-chronicle/</link>
 				<guid isPermaLink="true">http://nhandler.com/2012/10/29/hello-chronicle/</guid>
-			</item>
-		
-			<item>
-				<title>FOSSCON</title>
-				
-					<description>&lt;p&gt;This post is long past due, but I figured it is better late than never. At the start of the year, I set a goal to get more involved with attending and speaking at conferences. Through work, I was able to attend the &lt;a href=&quot;https://www.socallinuxexpo.org/scale/14x&quot;&gt;Southern California Linux Expo (SCALE)&lt;/a&gt; in Pasadena, CA in January. I also got to give a talk at &lt;a href=&quot;http://conferences.oreilly.com/oscon/oscon-tx-2016&quot;&gt;O’Relly’s Open Source Convention (OSCON)&lt;/a&gt; in Austin, TX in May. However, I really wanted to give a talk about my experience contributing in the Ubuntu community.&lt;/p&gt;
-
-</description>
-				
-				<pubDate>Sun, 07 Oct 2012 00:00:00 -0400</pubDate>
-				<link>http://nhandler.com/blog/2012/10/07/fosscon/</link>
-				<guid isPermaLink="true">http://nhandler.com/2012/10/07/fosscon/</guid>
 			</item>
 		
 	</channel>
