@@ -10,11 +10,7 @@
 		{% for post in site.categories.planet-debian %}
 			<item>
 				<title>{{ post.title | xml_escape }}</title>
-				{% if post.excerpt %}
-					<description>{{ post.excerpt | xml_escape }}</description>
-				{% else %}
-					<description>{{ post.content | xml_escape }}</description>
-				{% endif %}
+				<description>{{ post.content | xml_escape }}</description>
 				<pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
 				<link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
 				<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
