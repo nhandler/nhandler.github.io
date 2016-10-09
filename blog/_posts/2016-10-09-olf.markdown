@@ -1,0 +1,28 @@
+---
+layout:     post
+title:      "Ohio Linux Fest"
+published:  true
+date:       2012-10-09
+categories: ["Planet Debian", "Planet Ubuntu"]
+tags:       [Conference]
+---
+
+This weekend, I traveled to Columbus, Ohio to attend [Ohio Linux Fest](https://ohiolinux.org/). I departed San Francisco early on Thursday. It was interesting getting to experience the luxurious side of flying as I enjoyed a mimosa in the American Express Centurion lounge for the first time. I even happend to cross paths with [Corey Quinn](https://twitter.com/QuinnyPig), who was on his way to [DevOpsDays Boise].
+
+While connecting in Houston, I met up with the always awesome [José Antonio Rey](https://launchpad.net/~jose), who was to be my travel companion for this trip. The long day of travel took its toll on us, so we had a lazy Friday morning before checking in for the conference around lunch time. I was not that interested in the afternoon sessions, so I spent the majority of the first day helping out at the [Ubuntu](https://www.ubuntu.com/) booth and catching up with friends and colleagues. The day ended with a nice Happy Hour sponsored by [Oracle](https://www.oracle.com/index.html).
+
+Saturday was the main day for the conference. [Ethan Galstad](https://twitter.com/fatherofnagios), Founder and CEO of Nagios, started the day with a Keynote about Becoming the Next Tech Entrepreneur. Next up was [Elizabeth K. Joseph](http://princessleia.com/) with A Tour of OpenStack Deployment Scenarios. While I've read plenty about OpenStack, I've never actually used it before. As a result, this demo and introduction was great to watch. It was entertaining to watch her login to [CirrOS](https://launchpad.net/cirros) with the default password of *cubswin:)*, as the Chicago Cubs are currently playing the San Francisco Giants in the National League Divisional Series (and winning). Unfortunately, I was not able to win a copy of her new [Common OpenStack Deployments](https://deploymentsbook.com/) book, but it was great getting to watch her signing copies for other attendees after all of the hard work that went into writing the book.
+
+For lunch, José, Elizabeth, and [Svetlana Belkin](https://twitter.com/senseopenness) all gathered together for an informal Ubuntu lunch.
+
+Finally, it was time for me to give my talk. This was the same talk I gave at FOSSCON, but this time, I had a significantly larger audience. Practice definitely makes perfect, as my delivery was a lot better the second time giving this talk. Afterwards, I had a number of people come up to me to let me know that they really enjoyed the presentation. Pro Tip: If you ever attend a talk, the speaker will really appreciate any feedback you send their way. Even if it is a simple, "Thank You", it really means a lot. One of the people who came up to me after the talk was [Unit193](https://launchpad.net/~unit193). We have known each other through Ubuntu for years, but there has never been an opportunity to meet in person. I am proud to be able to say with 99% confidence that he is not a robot, and is in fact a real person.
+
+Next up was a lesson about the _/proc_ filesystem. While I've explored it a bit on my own before, I still learned a few tips and tricks about information that can be gained from the files in this magical directory.
+
+Following this was a talk about Leading When You're Not the Boss. It was even partially taught by a dummy (the speaker was a ventriloquist). The last regular talk of the day was one of the more interesting ones I attended. It was a talk by [Patrick Shuff](https://twitter.com/patrickshuff) from Facebook about how they have built a load balancer than can handle a billion users. The slide deck was well-made with very clear diagrams. The speaker was also very knowledgeable and dealt with the plethora of questions he received.
+
+Prior to the closing keynote was a series of lightning talks. These served as a great means to get people laughing after a long day of talks. The closing keynote was given by father and daughter Joe and Lilly Born about The Democratization of Invention. Both of them had very interesting stories, and Lily was quite impressive given her age.
+
+We skipped the [Nagios](https://www.nagios.org/) After Party in favor of a more casual pizza dinner.
+
+Overall, it was a great conference, and I am very glad to have had the opportunity to attend. A big thanks to Canonical and the Ubuntu Community for fudning my travel through the [Ubuntu Community Fund](https://forms.canonical.com/cda/) and to the Ohio Linux Fest staff for allowing me the opportunity to speak at such a great conference.
