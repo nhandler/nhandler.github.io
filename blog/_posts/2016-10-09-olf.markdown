@@ -3,7 +3,7 @@ layout:     post
 title:      "Ohio Linux Fest"
 published:  true
 date:       2016-10-09
-categories: ["Planet Debian", "Planet Ubuntu"]
+categories: ["planet-debian", "planet-ubuntu"]
 tags:       [Conference]
 ---
 

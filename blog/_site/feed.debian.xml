@@ -7,6 +7,33 @@
 		<atom:link href="http://nhandler.com/feed.debian.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Ohio Linux Fest</title>
+				<description>&lt;p&gt;This weekend, I traveled to Columbus, Ohio to attend &lt;a href=&quot;https://ohiolinux.org/&quot;&gt;Ohio Linux Fest&lt;/a&gt;. I departed San Francisco early on Thursday. It was interesting getting to experience the luxurious side of flying as I enjoyed a mimosa in the American Express Centurion lounge for the first time. I even happend to cross paths with &lt;a href=&quot;https://twitter.com/QuinnyPig&quot;&gt;Corey Quinn&lt;/a&gt;, who was on his way to [DevOpsDays Boise].&lt;/p&gt;
+
+&lt;p&gt;While connecting in Houston, I met up with the always awesome &lt;a href=&quot;https://launchpad.net/~jose&quot;&gt;José Antonio Rey&lt;/a&gt;, who was to be my travel companion for this trip. The long day of travel took its toll on us, so we had a lazy Friday morning before checking in for the conference around lunch time. I was not that interested in the afternoon sessions, so I spent the majority of the first day helping out at the &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; booth and catching up with friends and colleagues. The day ended with a nice Happy Hour sponsored by &lt;a href=&quot;https://www.oracle.com/index.html&quot;&gt;Oracle&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Saturday was the main day for the conference. &lt;a href=&quot;https://twitter.com/fatherofnagios&quot;&gt;Ethan Galstad&lt;/a&gt;, Founder and CEO of Nagios, started the day with a Keynote about Becoming the Next Tech Entrepreneur. Next up was &lt;a href=&quot;http://princessleia.com/&quot;&gt;Elizabeth K. Joseph&lt;/a&gt; with A Tour of OpenStack Deployment Scenarios. While I’ve read plenty about OpenStack, I’ve never actually used it before. As a result, this demo and introduction was great to watch. It was entertaining to watch her login to &lt;a href=&quot;https://launchpad.net/cirros&quot;&gt;CirrOS&lt;/a&gt; with the default password of &lt;em&gt;cubswin:)&lt;/em&gt;, as the Chicago Cubs are currently playing the San Francisco Giants in the National League Divisional Series (and winning). Unfortunately, I was not able to win a copy of her new &lt;a href=&quot;https://deploymentsbook.com/&quot;&gt;Common OpenStack Deployments&lt;/a&gt; book, but it was great getting to watch her signing copies for other attendees after all of the hard work that went into writing the book.&lt;/p&gt;
+
+&lt;p&gt;For lunch, José, Elizabeth, and &lt;a href=&quot;https://twitter.com/senseopenness&quot;&gt;Svetlana Belkin&lt;/a&gt; all gathered together for an informal Ubuntu lunch.&lt;/p&gt;
+
+&lt;p&gt;Finally, it was time for me to give my talk. This was the same talk I gave at FOSSCON, but this time, I had a significantly larger audience. Practice definitely makes perfect, as my delivery was a lot better the second time giving this talk. Afterwards, I had a number of people come up to me to let me know that they really enjoyed the presentation. Pro Tip: If you ever attend a talk, the speaker will really appreciate any feedback you send their way. Even if it is a simple, “Thank You”, it really means a lot. One of the people who came up to me after the talk was &lt;a href=&quot;https://launchpad.net/~unit193&quot;&gt;Unit193&lt;/a&gt;. We have known each other through Ubuntu for years, but there has never been an opportunity to meet in person. I am proud to be able to say with 99% confidence that he is not a robot, and is in fact a real person.&lt;/p&gt;
+
+&lt;p&gt;Next up was a lesson about the &lt;em&gt;/proc&lt;/em&gt; filesystem. While I’ve explored it a bit on my own before, I still learned a few tips and tricks about information that can be gained from the files in this magical directory.&lt;/p&gt;
+
+&lt;p&gt;Following this was a talk about Leading When You’re Not the Boss. It was even partially taught by a dummy (the speaker was a ventriloquist). The last regular talk of the day was one of the more interesting ones I attended. It was a talk by &lt;a href=&quot;https://twitter.com/patrickshuff&quot;&gt;Patrick Shuff&lt;/a&gt; from Facebook about how they have built a load balancer than can handle a billion users. The slide deck was well-made with very clear diagrams. The speaker was also very knowledgeable and dealt with the plethora of questions he received.&lt;/p&gt;
+
+&lt;p&gt;Prior to the closing keynote was a series of lightning talks. These served as a great means to get people laughing after a long day of talks. The closing keynote was given by father and daughter Joe and Lilly Born about The Democratization of Invention. Both of them had very interesting stories, and Lily was quite impressive given her age.&lt;/p&gt;
+
+&lt;p&gt;We skipped the &lt;a href=&quot;https://www.nagios.org/&quot;&gt;Nagios&lt;/a&gt; After Party in favor of a more casual pizza dinner.&lt;/p&gt;
+
+&lt;p&gt;Overall, it was a great conference, and I am very glad to have had the opportunity to attend. A big thanks to Canonical and the Ubuntu Community for fudning my travel through the &lt;a href=&quot;https://forms.canonical.com/cda/&quot;&gt;Ubuntu Community Fund&lt;/a&gt; and to the Ohio Linux Fest staff for allowing me the opportunity to speak at such a great conference.&lt;/p&gt;
+</description>
+				<pubDate>Sun, 09 Oct 2016 00:00:00 -0400</pubDate>
+				<link>http://nhandler.com/blog/2016/10/09/olf/</link>
+				<guid isPermaLink="true">http://nhandler.com/2016/10/09/olf/</guid>
+			</item>
+		
+			<item>
 				<title>FOSSCON</title>
 				<description>&lt;p&gt;This post is long past due, but I figured it is better late than never. At the start of the year, I set a goal to get more involved with attending and speaking at conferences. Through work, I was able to attend the &lt;a href=&quot;https://www.socallinuxexpo.org/scale/14x&quot;&gt;Southern California Linux Expo (SCALE)&lt;/a&gt; in Pasadena, CA in January. I also got to give a talk at &lt;a href=&quot;http://conferences.oreilly.com/oscon/oscon-tx-2016&quot;&gt;O’Relly’s Open Source Convention (OSCON)&lt;/a&gt; in Austin, TX in May. However, I really wanted to give a talk about my experience contributing in the Ubuntu community.&lt;/p&gt;
 
