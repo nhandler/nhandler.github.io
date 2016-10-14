@@ -1,0 +1,73 @@
+==================================================================
+https://keybase.io/nhandler
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://nhandler.com
+  * I am nhandler (https://keybase.io/nhandler) on keybase.
+  * I have a public key with fingerprint 31DC C3B3 3F21 7988 3DA0  14C7 CAFB 3BAD 0A75 C877
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101b5006cf3e1a9e29868ca7190f13051809a9e17a822f8418d0810a6b4a85ba3220a",
+            "fingerprint": "31dcc3b33f2179883da014c7cafb3bad0a75c877",
+            "host": "keybase.io",
+            "key_id": "cafb3bad0a75c877",
+            "kid": "0101b5006cf3e1a9e29868ca7190f13051809a9e17a822f8418d0810a6b4a85ba3220a",
+            "uid": "010f748174d32712d2864b7f8e13ee19",
+            "username": "nhandler"
+        },
+        "service": {
+            "hostname": "nhandler.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1476412393,
+    "expire_in": 157680000,
+    "prev": "0d054b86131bd6abb5b001852a8dd9cd664727bee9f1e141bd8ea46969801905",
+    "seqno": 19,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGtkltMFFcYx5ddLoJaKVQNRCNOg9YWcc5cz6BbDZfGy7a1tKsY0sKZmbPLcNml
+u8PdhYQgUCF2CYV4gUCljQiiLaXyIq3aJiKg8YEqAjVN2Got1YSKSilsO2PqS9PH
+npeT853f/3/+35fjXW4yLAkY+nNrT1jBYFHA8H3RkGZImi8jRKdcQiSUETn42YZz
+ZexWM3IUmUggSEACkSVJTrLRGCABUwLkoIR4IJA2QJMsgKSglQGPIEXZIAOgTEJA
+Ik5kEGRFRFMUiYg4wqY47NiV71IcqmZLA1mSaJGmbRTgBQhpGZGAkXgJ2URaRDKJ
+eFaCPK8Js5xuXaGFE5EbxytOraYdMp7F+w/+f85d8NzOxjMQ8IxMUzygZApyjMjb
+IAY0xkDQQTd2OVAe1mhHFnLIudhFeOIIrVqoSFgfrN7Jv4h4yZmnafNdTtUpOXO1
+myxVzU/QhWpJvk4WYTHjH48MUXHI2hg1QSF2uRWng0gAGimpim4KGJ5jAEULdByB
+i/MVF85QdILlOUhqS38GF+rNyCTLiJBLAzQQZQ6JIiuSJIAshaAsC5LMcQxP8SLG
+gg1gwGgQxIjhBE6ApDY/ltDb+tDh1MwFLSiya6Zuxe5AaoELE56wj4xrAg0BSwzB
+QUb9hxnCQsOff7um1hV/lZwNv+OPqj1+KbEo0vtrYndQeo0/tBzut4lW3sLtvXCU
+BXuPJbWvrmgPGxx9DwHr+QEfFA77rm86Te3bntqx/oW7nnST/HQ6+mVLbGBylG/0
+atV0TPDHmcS3j27OlZ7y545UkTNfS95Ow62XPOF98yc72n1vTL5b3wbjGn82179u
+2fBVw9yU70hf8Y2f6mLPtz1oGcx7a9mBVzIX/SzXOfMw+pNtm+l1v5R1diQ3k3PN
+OX9EoNulF745+N3Ept/Oyh8Mj85NbWZuRjCVj9JjeoVY+8UG7v2Fvr6xxwt2Nse6
+cG9+enfqpDXUf6X0aFli6+iX54ImdsP1KSvUrOE3q4nA4pbq+tqotvYKT//CrsHt
+e2Yfu2Dd7GoBBP54uT/ts67IpIjo8pSZqaATeCSiOtZnPOKuz145ZnrSO248tB/e
+qatte2hJbjJtIW7vyFtqbqJ3ikNhBZHXfu9NGT/DlanXGodCssa79xXR9uaWz3s6
+4w8ZzavGXsy9+PatlXVSyBPqfhSIYRYPfuFf2m/5YW03bR42NYSXX40q7TrhnTEP
+VrRufG3HWGAyG7R1+bIaqz21cao5076xb/KUkV1Tue20O/VMz8jTncHeosUJaDpZ
+syp7y5UHs0PyotpjMeecu37500sbxl8NGYDHhwfGsw32Sc+Bd6yxdyvv3Vi39vuq
+XV1/Aw==
+=PcCa
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/nhandler
+
+==================================================================
