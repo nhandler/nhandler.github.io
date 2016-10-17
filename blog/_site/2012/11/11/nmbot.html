@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Debian Screencast Challenge</title>
+    <title>Introducing nmbot</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Nathan Handler's Blog">
-    <link rel="canonical" href="http://nhandler.com/blog/2012/10/30/debian-screencast-challenge/">
+    <link rel="canonical" href="http://nhandler.com/blog/2012/11/11/nmbot.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/blog/css/main.css">
@@ -58,16 +58,14 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Debian Screencast Challenge</h1>
-    <p class="meta">Oct 30, 2012</p>
+    <h1>Introducing nmbot</h1>
+    <p class="meta">Nov 11, 2012</p>
   </header>
 
   <article class="post-content">
-  <p>Today in <em>#debian-mentors</em>, a brief discussion about screencasts came up. Some people felt that a series of short screencasts might be a nice addition to the existing Debian Developer documentation. After seeing the popularity of of Ubuntu’s various video series over the years, I tend to agree that video documentation can be a nice way to supplement traditional text-based documentation. No, this is not designed to replace the existing documentation; it is merely designed to provide an alternative method for people to learn the material.</p>
+  <p>While going through the NM Process, I spent a lot of time on <a href="https://nm.debian.org/">https://nm.debian.org</a>. At the bottom of the page, there is a TODO list of some new features they would like to implement. One item on the list jumped out at me as something I was capable of completing: <strong>IRC bot to update stats in the #debian-newmaint channel topic</strong>. I immediately reached out to Enrico Zini who was very supportive of the idea. He also explained how he wanted to expand on that idea and have the bot send updates to the channel whenever the progress of an applicant changes. Thanks to Paul Tagliamonte, I was able to get my hands on a copy of the nm.debian.org database (with private information replaced with dummy data). This allowed me to create some code to parse the database and create counts for the number of people waiting in the various queues. I also created a list of events that occurred in the last n days. Enrico then took this code and modified it to integrate it into the <a href="https://nm.debian.org/public/stats/latest">website</a>. You can specify the <a href="https://nm.debian.org/public/stats/latest?days=30">number of days</a> to show events for, and even have the information produced in <a href="https://nm.debian.org/public/stats/latest?days=30&amp;json=true">JSON format</a>. This information is generated upon requesting the page, so it is always up-to-date. It took a couple of rounds of revisions to ensure that the website was exposing all of the necessary information in the JSON export. At this stage, I converted the code to be an IRC bot. Based on prior experience, I decided to implement this as an irssi<a href="http://www.irssi.org/">5</a> script. The bot is currently running as <em>nmbot</em> in <em>#debian-newmaint</em> on <em>OFTC</em>. Every minute, it fetches the JSON statistics to see if any new events have occurred. If they have, it updates the topic and sends announcements as necessary.</p>
 
-<p>From past experience, I know that if I were to start making screencasts by myself, I would end up making one or two before getting bored and moving on to a new project. That is why I am posing a challenge to the Debian community: I will make one screencast for every screencast made by someone in the Debian community. These screencasts can and should be short (only a couple of minutes in length) and focus on accomplishing one small task or explaining a single concept related to Debian Development. I discovered a Debian Screencasts <a href="http://wiki.debian.org/DebianDesktop/Screencasts">page</a> on the Debian wiki that links to Ubuntu’s <a href="https://wiki.ubuntu.com/ScreencastTeam/RecordingScreencasts">guide</a> to creating screencasts. While I have done some traditional documentation work in the past, I have never really tried doing screencasts. As a result, this will be a bit of a learning experience for me at first.</p>
-
-<p>If you are interested in taking me up on this challenge, simply send me an email (nhandler [at] ubuntu [dot] com) or poke me on IRC (nhandler@{freenode,oftc}). This will allow us to coordinate and plan the screencasts. As I mentioned earlier, I have no experience creating screencasts, so if you are familar with the Debian Development processes and think this challenge sounds interesting, feel free to contact me.</p>
+<p>While the bot is running, there are still a few more things on its TODO list. First, we need to move it to a stable and permanent home. Running it off of my personal laptop is fine for testing, but it is not a long term solution. Luckily, Joerg Jaspert (Ganneff) has graciously offerred to host the bot. He also made the suggestion of converting the bot to a <a href="http://sourceforge.net/projects/supybot/">Supybot</a> plugin so that it could be integrated into the existing ftpmaster bot (dak). The bot’s code is currently pretty simple, so I do not expect too much difficulty in converting it to Python/supybot. One last item on the list is something that Enrico is working on implementing. He is going to have the website generate static versions of the JSON output whenever an applicant’s progress changes. The bot could then fetch this file, which would reduce the number of times the site needs to generate the JSON. The code for the bot is available in a <a href="https://github.com/nhandler/nmbot">public git repository</a>, and feedback/suggestions are always appreciated.</p>
 
 
   </article>

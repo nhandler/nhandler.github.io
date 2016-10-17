@@ -12,5 +12,5 @@ link-tags: false
 
 # Build settings
 markdown: kramdown
-permalink: /:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title.html
 # theme: beautiful-jekyll

@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Introducing nmbot</title>
+    <title>Ubuntu California 15.10 Release Party</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Nathan Handler's Blog">
-    <link rel="canonical" href="http://nhandler.com/blog/2012/11/11/nmbot/">
+    <link rel="canonical" href="http://nhandler.com/blog/2015/11/03/ubuntu-15.10-release-party.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/blog/css/main.css">
@@ -58,18 +58,39 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Introducing nmbot</h1>
-    <p class="meta">Nov 11, 2012</p>
+    <h1>Ubuntu California 15.10 Release Party</h1>
+    <p class="meta">Nov 3, 2015</p>
   </header>
 
   <article class="post-content">
-  <p>While going through the NM Process, I spent a lot of time on <a href="https://nm.debian.org/">https://nm.debian.org</a>. At the bottom of the page, there is a TODO list of some new features they would like to implement. One item on the list jumped out at me as something I was capable of completing: <strong>IRC bot to update stats in the #debian-newmaint channel topic</strong>. I immediately reached out to Enrico Zini who was very supportive of the idea. He also explained how he wanted to expand on that idea and have the bot send updates to the channel whenever the progress of an applicant changes. Thanks to Paul Tagliamonte, I was able to get my hands on a copy of the nm.debian.org database (with private information replaced with dummy data). This allowed me to create some code to parse the database and create counts for the number of people waiting in the various queues. I also created a list of events that occurred in the last n days. Enrico then took this code and modified it to integrate it into the <a href="https://nm.debian.org/public/stats/latest">website</a>. You can specify the <a href="https://nm.debian.org/public/stats/latest?days=30">number of days</a> to show events for, and even have the information produced in <a href="https://nm.debian.org/public/stats/latest?days=30&amp;json=true">JSON format</a>. This information is generated upon requesting the page, so it is always up-to-date. It took a couple of rounds of revisions to ensure that the website was exposing all of the necessary information in the JSON export. At this stage, I converted the code to be an IRC bot. Based on prior experience, I decided to implement this as an irssi<a href="http://www.irssi.org/">5</a> script. The bot is currently running as <em>nmbot</em> in <em>#debian-newmaint</em> on <em>OFTC</em>. Every minute, it fetches the JSON statistics to see if any new events have occurred. If they have, it updates the topic and sends announcements as necessary.</p>
+  <p><img src="http://people.ubuntu.com/~nhandler/images/11032015-Ubuntu15.10ReleaseParty.jpg" alt="Ubuntu California 15.10 Release Party" /></p>
 
-<p>While the bot is running, there are still a few more things on its TODO list. First, we need to move it to a stable and permanent home. Running it off of my personal laptop is fine for testing, but it is not a long term solution. Luckily, Joerg Jaspert (Ganneff) has graciously offerred to host the bot. He also made the suggestion of converting the bot to a <a href="http://sourceforge.net/projects/supybot/">Supybot</a> plugin so that it could be integrated into the existing ftpmaster bot (dak). The bot’s code is currently pretty simple, so I do not expect too much difficulty in converting it to Python/supybot. One last item on the list is something that Enrico is working on implementing. He is going to have the website generate static versions of the JSON output whenever an applicant’s progress changes. The bot could then fetch this file, which would reduce the number of times the site needs to generate the JSON. The code for the bot is available in a <a href="https://github.com/nhandler/nmbot">public git repository</a>, and feedback/suggestions are always appreciated.</p>
-
+<p>On Thursday, October 22, 2015, Ubuntu 15.10 (Wily Werewolf) was released. To celebrate, some San Francisco members of the Ubuntu California LoCo Team held a small release party. Yelp was gracious enough to host the event and provide us with food and drinks. Canonical also sent us a box of swag for the event. Unfortunately, it did not arrive in time. Luckily, James Ouyang had some extra goodies from a previous event for us to hand out. Despite having a rather small turnout for the event, it was still a fun night. Several people borrowed the USB flash drives I had setup with Ubuntu, Kubuntu, and Xubuntu 15.10 in order to install Ubuntu on their machines. Other people were happy to play around with the new release in a virtual machine on my computer. Overall, it was a good night. Hopefully, we can put together an even better and larger release party for Ubuntu 16.04 LTS.</p>
 
   </article>
 
+  
+    <div id="disqus_thread"></div>
+    <script>
+
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+  /*
+  var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//nhandler.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <script id="dsq-count-scr" src="//nhandler.disqus.com/count.js" async></script>
   
 
 </div>
