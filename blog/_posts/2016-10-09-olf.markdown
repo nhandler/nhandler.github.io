@@ -5,7 +5,7 @@ published:  true
 date:       2016-10-09
 categories: ["planet-debian", "planet-ubuntu"]
 tags:       [Conference]
-permalink:  :year/:month/:day/:title.html
+permalink:  /blog/:year/:month/:day/:title.html
 ---
 
 This weekend, I traveled to Columbus, Ohio to attend [Ohio Linux Fest](https://ohiolinux.org/). I departed San Francisco early on Thursday. It was interesting getting to experience the luxurious side of flying as I enjoyed a mimosa in the American Express Centurion lounge for the first time. I even happend to cross paths with [Corey Quinn](https://twitter.com/QuinnyPig), who was on his way to [DevOpsDays Boise].
