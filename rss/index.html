@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23F26522' d='M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM96 136c0-13.3 10.7-24 24-24 137 0 248 111 248 248 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-110.5-89.5-200-200-200-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24 83.9 0 152 68.1 152 152 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-57.4-46.6-104-104-104-13.3 0-24-10.7-24-24zm64 120c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z'/%3E%3C/svg%3E" type="image/svg+xml">
+  <title>RSS Viewer</title>
+  <style>
+    :root {
+      /* Light mode (default) */
+      --background-color: #f5f5f5;
+      --text-color: #333;
+      --card-background: white;
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --border-color: #eee;
+      --secondary-text: #666;
+      --input-border: #ddd;
+      --primary-color: #0070f3;
+      --primary-hover: #005cc5;
+      --error-background: #fee2e2;
+      --error-border: #ef4444;
+      --error-text: #b91c1c;
+      --feed-header-bg: #f9fafb;
+    }
+
+    /* Manual dark theme class to override system preference */
+    html.dark-theme {
+      --background-color: #121212;
+      --text-color: #e0e0e0;
+      --card-background: #1e1e1e;
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --border-color: #333;
+      --secondary-text: #aaa;
+      --input-border: #444;
+      --primary-color: #6cb4ff; /* Lighter blue for better contrast in dark mode */
+      --primary-hover: #8cc5ff; /* Even lighter on hover */
+      --error-background: #350c0c;
+      --error-border: #771d1d;
+      --error-text: #ff6b6b;
+      --feed-header-bg: #252525;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light-theme) {
+        /* Dark mode */
+        --background-color: #121212;
+        --text-color: #e0e0e0;
+        --card-background: #1e1e1e;
+        --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --border-color: #333;
+        --secondary-text: #aaa;
+        --input-border: #444;
+        --primary-color: #6cb4ff; /* Lighter blue for better contrast in dark mode */
+        --primary-hover: #8cc5ff; /* Even lighter on hover */
+        --error-background: #350c0c;
+        --error-border: #771d1d;
+        --error-text: #ff6b6b;
+        --feed-header-bg: #252525;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    .feed-form {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+
+    input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid var(--input-border);
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+      background-color: var(--card-background);
+      color: var(--text-color);
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .loader {
+      text-align: center;
+      display: none;
+      margin: 2rem 0;
+    }
+
+    .loader div {
+      width: 1rem;
+      height: 1rem;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 0.3rem;
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1.0); }
+    }
+
+    .error {
+      background-color: var(--error-background);
+      border: 1px solid var(--error-border);
+      color: var(--error-text);
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      display: none;
+    }
+
+    .feed-container {
+      background-color: var(--card-background);
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      display: none;
+    }
+
+    .feed-header {
+      padding: 1.5rem;
+      background-color: var(--feed-header-bg);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .feed-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feed-description {
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feed-link {
+      font-size: 0.9rem;
+      color: var(--primary-color);
+    }
+
+    .feed-items {
+      padding: 1rem;
+    }
+
+    .feed-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feed-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+
+    .item-title:hover {
+      text-decoration: underline;
+    }
+
+    .item-meta {
+      display: flex;
+      font-size: 0.8rem;
+      color: var(--secondary-text);
+      margin-bottom: 1rem;
+    }
+
+    .item-date {
+      margin-right: 1rem;
+    }
+
+    .item-content {
+      line-height: 1.6;
+    }
+
+    .item-content img {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
+
+    .item-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .item-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Toggle button for theme switching */
+    .theme-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--card-background);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      border: 1px solid var(--border-color);
+    }
+
+    .theme-toggle-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: var(--text-color);
+    }
+
+    /* New CSS for the selected item view */
+    .feed-item-focused {
+      padding: 2rem;
+      border: none;
+      max-width: 100%;
+    }
+
+    .feed-item-focused .item-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      color: var(--text-color);
+      cursor: text;
+    }
+
+    .feed-item-focused .item-title:hover {
+      text-decoration: none;
+    }
+
+    .feed-item-focused .item-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .feed-item-focused .item-meta {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feed-item-hidden {
+      display: none;
+    }
+
+    .back-to-feed {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .back-to-feed:hover {
+      text-decoration: underline;
+    }
+
+    /* Fix for links in content */
+    .item-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .item-content a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header">
+    <h1>RSS Viewer</h1>
+    <p>Enter an RSS feed URL below to get started</p>
+  </header>
+
+  <main>
+    <div class="feed-form-container">
+      <form id="feed-form" class="feed-form">
+        <input type="url" id="feed-url" placeholder="Enter RSS feed URL" required>
+        <button type="submit">Load Feed</button>
+      </form>
+    </div>
+
+    <div id="error" class="error"></div>
+
+    <div id="loader" class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div id="feed-container" class="feed-container">
+      <div id="feed-header" class="feed-header">
+        <h2 id="feed-title" class="feed-title"></h2>
+        <div id="feed-description" class="feed-description"></div>
+        <a id="feed-link" class="feed-link" href="#" target="_blank">Visit website</a>
+      </div>
+      <div id="feed-items" class="feed-items"></div>
+    </div>
+  </main>
+
+  <!-- Theme toggle button -->
+  <div id="theme-toggle" class="theme-toggle" title="Toggle theme" aria-label="Toggle between light and dark mode">
+    <svg id="theme-toggle-icon" class="theme-toggle-icon" viewBox="0 0 24 24">
+      <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM5.636 5.636a.75.75 0 011.06 0l1.592 1.591a.75.75 0 11-1.061 1.06l-1.591-1.59a.75.75 0 010-1.061zm12.728 12.728a.75.75 0 011.06 0l1.591 1.592a.75.75 0 01-1.06 1.06l-1.591-1.59a.75.75 0 010-1.061zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm14.25-.75a.75.75 0 000 1.5h2.25a.75.75 0 000-1.5h-2.25zM5.636 18.364a.75.75 0 010 1.06l-1.591 1.592a.75.75 0 11-1.06-1.06l1.59-1.591a.75.75 0 011.061 0zm12.728-12.728a.75.75 0 010 1.06l-1.591 1.592a.75.75 0 01-1.06-1.06l1.59-1.592a.75.75 0 011.061 0z" id="sun-icon" />
+      <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" id="moon-icon" style="display:none;" />
+    </svg>
+  </div>
+
+  <script src="https://unpkg.com/fast-xml-parser@4.3.4/lib/fxp.min.js"></script>
+
+  <script>
+  // DOM elements
+  const feedForm = document.getElementById('feed-form');
+  const feedUrlInput = document.getElementById('feed-url');
+  const errorElement = document.getElementById('error');
+  const loaderElement = document.getElementById('loader');
+  const siteHeaderElement = document.getElementById('site-header');
+  const feedContainer = document.getElementById('feed-container');
+  const feedTitleElement = document.getElementById('feed-title');
+  const feedDescriptionElement = document.getElementById('feed-description');
+  const feedLinkElement = document.getElementById('feed-link');
+  const feedItemsElement = document.getElementById('feed-items');
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+
+  // Track current feed and focused item
+  let currentFeed = null;
+  let focusedItemId = null;
+
+  // Theme handling
+  function setupThemeToggle() {
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Apply initial theme
+    if (savedTheme === 'dark' || (savedTheme === null && prefersDark)) {
+      applyDarkTheme();
+    } else if (savedTheme === 'light') {
+      applyLightTheme();
+    } else {
+      // No saved preference, use system preference
+      prefersDark ? applyDarkTheme() : applyLightTheme();
+    }
+
+    // Add click event listener to theme toggle button
+    themeToggle.addEventListener('click', toggleTheme);
+
+    // Also listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      // Only apply system preference if user hasn't set a preference
+      if (!localStorage.getItem('theme')) {
+        e.matches ? applyDarkTheme() : applyLightTheme();
+      }
+    });
+
+    // Log the current theme state for debugging
+    const currentTheme = document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light';
+    console.log('Initial theme:', currentTheme);
+  }
+
+  // Toggle between light and dark themes
+  function toggleTheme() {
+    if (document.documentElement.classList.contains('dark-theme')) {
+      applyLightTheme();
+      console.log('Switched to light theme');
+    } else {
+      applyDarkTheme();
+      console.log('Switched to dark theme');
+    }
+  }
+
+  // Apply dark theme
+  function applyDarkTheme() {
+    document.documentElement.classList.add('dark-theme');
+    document.documentElement.classList.remove('light-theme');
+    localStorage.setItem('theme', 'dark');
+    moonIcon.style.display = 'block';
+    sunIcon.style.display = 'none';
+  }
+
+  // Apply light theme
+  function applyLightTheme() {
+    document.documentElement.classList.remove('dark-theme');
+    document.documentElement.classList.add('light-theme');
+    localStorage.setItem('theme', 'light');
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+  }
+
+  // Event listeners
+  feedForm.addEventListener('submit', handleFormSubmit);
+
+  // Handle form submission
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const url = feedUrlInput.value.trim();
+    if (!url) return;
+
+    // Update URL to enable browser history and sharing
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('url', url);
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState({ url }, '', newUrl);
+
+    fetchFeed(url);
+  }
+
+  // Check for URL parameter on page load
+  function checkUrlParam() {
+    const searchParams = new URLSearchParams(window.location.search);
+    const url = searchParams.get('url');
+    if (url) {
+      feedUrlInput.value = url;
+      fetchFeed(url);
+    }
+  }
+
+  // Fetch and parse an RSS feed
+  async function fetchFeed(url) {
+    showLoader();
+    hideError();
+    hideFeed();
+
+    console.log(`Starting fetch for URL: ${url}`);
+
+    // List of CORS proxies to try in order
+    const corsProxies = [
+      (url) => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+      (url) => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`,
+      (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`
+    ];
+
+    let lastError = null;
+
+    // Try each proxy in sequence
+    for (let i = 0; i < corsProxies.length; i++) {
+      try {
+        const proxyFn = corsProxies[i];
+        const proxyUrl = proxyFn(url);
+        const proxyName = proxyUrl.includes('allorigins') ? 'AllOrigins' :
+                         proxyUrl.includes('rss2json') ? 'RSS2JSON' :
+                         'CORSProxy.io';
+
+        console.log(`Attempting proxy ${i+1} (${proxyName}): ${proxyUrl}`);
+
+        const response = await fetch(proxyUrl, {
+          headers: {
+            'Accept': 'application/json, application/xml, text/xml, */*'
+          }
+        });
+
+        if (!response.ok) {
+          console.error(`Proxy ${i+1} failed with status: ${response.status} ${response.statusText}`);
+          throw new Error(`Failed to fetch feed: ${response.status} ${response.statusText}`);
+        }
+
+        // Get the raw content from the response
+        const contentType = response.headers.get('Content-Type') || '';
+        console.log(`Response content type: ${contentType}`);
+
+        let content = await response.text();
+        console.log(`Received data from ${proxyName}, content length: ${content.length}`);
+
+        // Preview the content to help with debugging
+        const contentPreview = content.substring(0, 200).replace(/\n/g, ' ').trim();
+        console.log(`Content preview: ${contentPreview}`);
+
+        // Try to determine if we got JSON or XML
+        let isJson = contentType.includes('application/json') || content.trim().startsWith('{');
+
+        // Handle different proxy response formats
+        if (isJson) {
+          try {
+            console.log(`Response appears to be JSON, attempting to parse`);
+            const jsonData = JSON.parse(content);
+
+            // Handle AllOrigins format
+            if (jsonData.contents) {
+              console.log(`Detected AllOrigins JSON wrapper, extracting contents`);
+              content = jsonData.contents;
+            }
+            // Handle RSS2JSON format
+            else if (jsonData.items && jsonData.feed) {
+              console.log(`Detected RSS2JSON format, converting to XML`);
+              // We already have the parsed feed, just use it directly
+              const feed = {
+                title: jsonData.feed.title || 'Untitled Feed',
+                description: jsonData.feed.description || '',
+                link: jsonData.feed.link || '',
+                feedUrl: url,
+                items: jsonData.items.map(item => ({
+                  title: item.title || 'Untitled Item',
+                  link: item.link || '',
+                  description: item.description || '',
+                  content: item.content || item.description || '',
+                  pubDate: item.pubDate || '',
+                  author: item.author || '',
+                  id: item.guid || item.link || Math.random().toString(36).substring(2)
+                }))
+              };
+
+              displayFeed(feed);
+              return;
+            }
+          } catch (jsonError) {
+            console.error(`Failed to parse JSON:`, jsonError);
+
+            // If we can't parse as JSON but it starts with '{', it's likely malformed JSON
+            if (content.trim().startsWith('{')) {
+              throw new Error(`Malformed JSON response: ${jsonError.message}`);
+            }
+
+            // Otherwise, it might actually be XML despite the preview
+            console.log(`Response is not valid JSON, attempting to treat as XML`);
+          }
+        }
+
+        // Check if content is XML (more relaxed condition)
+        const containsXmlTag = content.trim().includes('<');
+
+        if (containsXmlTag) {
+          console.log(`Content contains XML tags, attempting to parse as RSS/Atom`);
+          try {
+            const feed = parseFeedContent(content, url);
+            displayFeed(feed);
+            return;
+          } catch (xmlError) {
+            console.error(`Failed to parse as XML:`, xmlError);
+            throw new Error(`Failed to parse feed: ${xmlError.message}`);
+          }
+        } else {
+          console.error(`Response does not appear to be XML or valid JSON`);
+          throw new Error(`Invalid response: Content is neither XML nor valid JSON`);
+        }
+      } catch (error) {
+        console.error(`Error with proxy ${i+1}:`, error);
+        lastError = error;
+        // Continue to the next proxy
+      }
+    }
+
+    // If we reach here, all proxies failed
+    hideLoader();
+
+    // Show a more detailed error message
+    const errorMessage = lastError?.message || 'Failed to fetch feed: All proxies failed';
+    console.error(`All proxies failed. Last error: ${errorMessage}`);
+
+    const detailedError = `
+      Error: ${errorMessage}
+
+      Troubleshooting suggestions:
+
+      1. Check that the URL is a valid RSS or Atom feed
+      2. Some RSS feeds restrict access through proxies
+      3. Open developer console (F12) for more detailed error logs
+    `;
+
+    showError(detailedError);
+  }
+
+  // Parse RSS/Atom feed content
+  function parseFeedContent(content, feedUrl) {
+    console.log(`Starting to parse content of length ${content.length}`);
+
+    try {
+      // Ensure we're working with a string
+      if (typeof content !== 'string') {
+        console.error(`Content is not a string, it's a ${typeof content}`);
+        content = String(content);
+      }
+
+      // Using the fast-xml-parser library loaded from CDN
+      const parser = new window.FastXmlParser.XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: '_',
+        textNodeName: '_text',
+        isArray: (name) => ['item', 'entry'].includes(name),
+        parseTagValue: true,
+        parseAttributeValue: false,
+        trimValues: true,
+        cdataTagName: '__cdata',
+        processEntities: true
+      });
+
+      // Try to parse the XML
+      const parsed = parser.parse(content);
+      console.log(`Parsed XML successfully, found keys:`, Object.keys(parsed));
+
+      // Handle RSS format
+      if (parsed.rss && parsed.rss.channel) {
+        console.log(`Detected RSS format`);
+        return parseRssFormat(parsed, feedUrl);
+      }
+
+      // Handle Atom format
+      if (parsed.feed) {
+        console.log(`Detected Atom format`);
+        return parseAtomFormat(parsed, feedUrl);
+      }
+
+      // Handle RSS without explicit rss root
+      if (parsed.channel) {
+        console.log(`Detected RSS format without rss root`);
+        const rssFormatted = {
+          rss: {
+            channel: parsed.channel
+          }
+        };
+        return parseRssFormat(rssFormatted, feedUrl);
+      }
+
+      // Handle RDF format (some older RSS feeds use this)
+      if (parsed.RDF) {
+        console.log(`Detected RDF format`);
+        return parseRdfFormat(parsed, feedUrl);
+      }
+
+      console.error(`Unsupported feed format, available keys:`, Object.keys(parsed));
+      throw new Error('Unsupported feed format. Available fields: ' + Object.keys(parsed).join(', '));
+    } catch (error) {
+      console.error(`Error parsing feed:`, error);
+      throw new Error(`Failed to parse feed: ${error.message || 'Invalid format'}`);
+    }
+  }
+
+  // Parse RDF format (older RSS format)
+  function parseRdfFormat(parsed, feedUrl) {
+    if (!parsed.RDF) {
+      throw new Error('Not a valid RDF feed');
+    }
+
+    const channel = parsed.RDF.channel || {};
+    const items = parsed.RDF.item || [];
+
+    const feedItems = Array.isArray(items)
+      ? items.map(parseRssItem)
+      : [parseRssItem(items)];
+
+    return {
+      title: channel.title || 'Untitled Feed',
+      description: channel.description || '',
+      link: channel.link || '',
+      feedUrl,
+      items: feedItems.filter(item => item !== null),
+    };
+  }
+
+  // Parse RSS format
+  function parseRssFormat(parsed, feedUrl) {
+    const channel = parsed.rss.channel;
+
+    const items = Array.isArray(channel.item)
+      ? channel.item.map(parseRssItem)
+      : [parseRssItem(channel.item)];
+
+    return {
+      title: channel.title || 'Untitled Feed',
+      description: channel.description || '',
+      link: channel.link || '',
+      feedUrl,
+      lastBuildDate: channel.lastBuildDate || '',
+      items,
+      image: channel.image || null
+    };
+  }
+
+  // Parse Atom format
+  function parseAtomFormat(parsed, feedUrl) {
+    const feed = parsed.feed;
+
+    const items = Array.isArray(feed.entry)
+      ? feed.entry.map(parseAtomEntry)
+      : [parseAtomEntry(feed.entry)];
+
+    return {
+      title: feed.title || 'Untitled Feed',
+      description: feed.subtitle || '',
+      link: feed.link?.href || (typeof feed.link === 'string' ? feed.link : ''),
+      feedUrl,
+      lastBuildDate: feed.updated || '',
+      items
+    };
+  }
+
+  // Parse an RSS item
+  function parseRssItem(item) {
+    if (!item) return null;
+
+    return {
+      title: item.title || 'Untitled Item',
+      link: item.link || '',
+      description: item.description || '',
+      content: item['content:encoded'] || item.description || '',
+      pubDate: item.pubDate || '',
+      author: item.author || item['dc:creator'] || '',
+      id: item.guid?._text || item.guid || item.link || Math.random().toString(36).substring(2)
+    };
+  }
+
+  // Parse an Atom entry
+  function parseAtomEntry(entry) {
+    if (!entry) return null;
+
+    const link = entry.link?.href ||
+                (Array.isArray(entry.link) ? entry.link[0]?.href : '') ||
+                (typeof entry.link === 'string' ? entry.link : '');
+
+    return {
+      title: entry.title || 'Untitled Item',
+      link,
+      description: entry.summary || entry.content || '',
+      content: entry.content || entry.summary || '',
+      pubDate: entry.published || entry.updated || '',
+      author: entry.author?.name || (typeof entry.author === 'string' ? entry.author : ''),
+      id: entry.id || link || Math.random().toString(36).substring(2)
+    };
+  }
+
+  // Display feed in the UI
+  function displayFeed(feed) {
+    hideLoader();
+    currentFeed = feed;
+    focusedItemId = null;
+
+    if (!feed || !feed.items || feed.items.length === 0) {
+      showError('Feed loaded but contains no items');
+      return;
+    }
+
+    // Update feed header
+    feedTitleElement.textContent = feed.title;
+    feedDescriptionElement.textContent = feed.description || '';
+    feedLinkElement.href = feed.link;
+
+    // Clear previous items
+    feedItemsElement.innerHTML = '';
+
+    // Add feed items
+    feed.items.forEach(item => {
+      if (!item) return;
+
+      const itemElement = document.createElement('article');
+      itemElement.className = 'feed-item';
+      itemElement.dataset.itemId = item.id;
+
+      // Format date
+      const dateStr = item.pubDate ? formatDate(item.pubDate) : '';
+
+      // Clean content for display
+      const cleanContent = cleanHtml(item.content || item.description || '');
+
+      itemElement.innerHTML = `
+        <h3 class="item-title">${item.title}</h3>
+        <div class="item-meta">
+          ${dateStr ? `<span class="item-date">${dateStr}</span>` : ''}
+          ${item.author ? `<span class="item-author">By ${item.author}</span>` : ''}
+        </div>
+        <div class="item-content">${cleanContent}</div>
+        <a href="${item.link}" class="item-link" target="_blank" rel="noopener noreferrer">Read original article</a>
+      `;
+
+      // Add click event to the title
+      itemElement.querySelector('.item-title').addEventListener('click', (e) => {
+        e.preventDefault();
+        showSingleItem(item.id);
+      });
+
+      feedItemsElement.appendChild(itemElement);
+    });
+
+    showFeed();
+  }
+
+  // Show a single item and hide others
+  function showSingleItem(itemId) {
+    if (!currentFeed) return;
+
+    focusedItemId = itemId;
+
+    const items = feedItemsElement.querySelectorAll('.feed-item');
+    let foundItem = false;
+
+    items.forEach(item => {
+      if (item.dataset.itemId === itemId) {
+        // Focus on this item
+        item.classList.add('feed-item-focused');
+        item.classList.remove('feed-item-hidden');
+
+        // Add back button if it doesn't exist
+        if (!item.querySelector('.back-to-feed')) {
+          const backButton = document.createElement('div');
+          backButton.className = 'back-to-feed';
+          backButton.innerHTML = '← Back to all articles';
+          backButton.addEventListener('click', showAllItems);
+
+          // Insert at the beginning of the item
+          item.insertBefore(backButton, item.firstChild);
+        }
+
+        // Change the title to not look clickable since we're already viewing it
+        const titleElement = item.querySelector('.item-title');
+        titleElement.style.cursor = 'text';
+        titleElement.style.color = 'var(--text-color)';
+
+        foundItem = true;
+
+        // Update the URL to include the item ID for direct linking
+        try {
+          const searchParams = new URLSearchParams(window.location.search);
+          searchParams.set('item', itemId);
+          const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+          window.history.pushState({ url: searchParams.get('url'), item: itemId }, '', newUrl);
+        } catch (e) {
+          console.error('Failed to update URL with item ID:', e);
+        }
+      } else {
+        // Hide all other items
+        item.classList.add('feed-item-hidden');
+        item.classList.remove('feed-item-focused');
+      }
+    });
+
+    // If we didn't find the item, show all items
+    if (!foundItem) {
+      showAllItems();
+    }
+
+    // Scroll to the top of the feed
+    window.scrollTo({
+      top: feedContainer.offsetTop - 20,
+      behavior: 'smooth'
+    });
+  }
+
+  // Show all items
+  function showAllItems() {
+    focusedItemId = null;
+
+    const items = feedItemsElement.querySelectorAll('.feed-item');
+    items.forEach(item => {
+      item.classList.remove('feed-item-hidden', 'feed-item-focused');
+
+      // Remove any back buttons
+      const backButton = item.querySelector('.back-to-feed');
+      if (backButton) {
+        backButton.remove();
+      }
+
+      // Reset title styling
+      const titleElement = item.querySelector('.item-title');
+      titleElement.style.cursor = 'pointer';
+      titleElement.style.color = 'var(--primary-color)';
+    });
+
+    // Update URL to remove the item parameter
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      searchParams.delete('item');
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+      window.history.pushState({ url: searchParams.get('url') }, '', newUrl);
+    } catch (e) {
+      console.error('Failed to update URL:', e);
+    }
+  }
+
+  // Check if there's an item ID in the URL
+  function checkItemParam() {
+    const searchParams = new URLSearchParams(window.location.search);
+    const itemId = searchParams.get('item');
+
+    if (itemId && currentFeed) {
+      showSingleItem(itemId);
+    }
+  }
+
+  // Helper functions
+  function formatDate(dateStr) {
+    try {
+      const date = new Date(dateStr);
+      if (isNaN(date.getTime())) return '';
+
+      return date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    } catch (e) {
+      return dateStr;
+    }
+  }
+
+  function cleanHtml(html) {
+    return html
+      // Fix relative image sources
+      .replace(/(src|href)="\/\//g, '$1="https://')
+      // Add target="_blank" to links
+      .replace(/<a\s+(?:[^>]*?\s+)?href=([^>]*)>/gi, '<a href=$1 target="_blank" rel="noopener noreferrer">')
+      // Fix image width/height
+      .replace(/<img\s+/gi, '<img style="max-width:100%; height:auto;" loading="lazy" ');
+  }
+
+  // UI helper functions
+  function showLoader() {
+    loaderElement.style.display = 'block';
+  }
+
+  function hideLoader() {
+    loaderElement.style.display = 'none';
+  }
+
+  function showError(message) {
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  }
+
+  function hideError() {
+    errorElement.style.display = 'none';
+  }
+
+  function showFeed() {
+    feedContainer.style.display = 'block';
+    // Hide the site header when showing feed
+    hideSiteHeader();
+
+    // Check if there's an item ID in the URL
+    checkItemParam();
+  }
+
+  function hideFeed() {
+    feedContainer.style.display = 'none';
+  }
+
+  function showSiteHeader() {
+    siteHeaderElement.style.display = 'block';
+  }
+
+  function hideSiteHeader() {
+    siteHeaderElement.style.display = 'none';
+  }
+
+  // Initialize the app
+  setupThemeToggle();
+  checkUrlParam();
+
+  // Listen for back/forward browser navigation
+  window.addEventListener('popstate', (event) => {
+    if (event.state) {
+      if (event.state.item) {
+        showSingleItem(event.state.item);
+      } else {
+        showAllItems();
+      }
+    }
+  });
+  </script>
+</body>
+</html>
