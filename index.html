@@ -1,1 +1,152 @@
-<html></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan Handler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --bg-gradient-1: #f5f7fa;
+            --bg-gradient-2: #eef2f7;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-color: #ffffff;
+                --box-shadow-color: rgba(255, 255, 255, 0.1);
+                --name-color: #ffffff;
+                --bg-gradient-1: #1e1e1e;
+                --bg-gradient-2: #2d2d2d;
+            }
+
+            .linkedin { background-color: #0a66c2; }
+            .github { background-color: #444; }
+            .reddit { background-color: #ff5700; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+            position: relative;
+            overflow-x: hidden;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(var(--text-color) 1px, transparent 1px),
+                radial-gradient(var(--text-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px var(--box-shadow-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--name-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a.linkedin { background-color: #0a66c2; }
+        .social-links a.github { background-color: #6e5494; }
+        .social-links a.reddit { background-color: #ff4500; }
+        .social-links a.bluesky { background-color: #0085ff; }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px var(--box-shadow-color);
+        }
+
+        @media (max-width: 768px) {
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="profile">
+            <img src="headshot.png" alt="Nathan Handler" class="profile-img">
+            <h1>Nathan Handler</h1>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nhandler" class="linkedin" aria-label="LinkedIn Profile" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/nhandler" class="github" aria-label="GitHub Profile" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.reddit.com/user/nhandler" class="reddit" aria-label="Reddit Profile" title="Reddit"><i class="fab fa-reddit-alien"></i></a>
+                <a href="https://bsky.app/profile/nhandler.com" class="bluesky" aria-label="Bluesky Profile" title="Bluesky"><i class="fas fa-cloud"></i></a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
